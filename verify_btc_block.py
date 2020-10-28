@@ -89,7 +89,5 @@ print("☑ calculated hash: "+CalculatedHash)
 print("☑ hash in block  : "+response["hash"])
 if(CalculatedHash==response["hash"]):
   print("✓ block hash matched!")
-  print("✓ Valid block!")
 else:
   print("✘ block hash doesn't matched!")
-  print("✘ Invalid block!")
