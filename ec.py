@@ -6,7 +6,7 @@
 P = 2**256 - 2**32 - 2**9 - 2**8 - 2**7 - 2**6 - 2**4 - 1 #prime number for modulus operations
 order= 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 #order for the elliptic curve y^2=x^3+7 ,used in bitcoin
 Gx = 55066263022277343669578718895168534326250603453777594175500187360389116729240 #x co-ordinate of generating point of secp256k1 i.e. curve used in bitcoin
-Gy = 32670510020758816978083085130507043184471273380659243275938904335757337482424 #x co-ordinate of generating point of secp256k1 i.e. curve used in bitcoin
+Gy = 32670510020758816978083085130507043184471273380659243275938904335757337482424 #y co-ordinate of generating point of secp256k1 i.e. curve used in bitcoin
 
 def modinv(a,n): # Extended Euclidean Algorithm
     lm, hm = 1,0
