@@ -46,3 +46,11 @@ def ECadd(xp,yp,xq,yq):
 
 # Elliptic curve point division (LOL)
 
+#test
+_xx=Gx
+_yy=Gy
+for i in range(10):
+  _xx,_yy=ECdouble(_xx,_yy)
+  print(2<<i,"* G=")
+  print(_xx,_yy)
+
