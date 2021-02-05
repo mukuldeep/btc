@@ -44,6 +44,8 @@ def ECadd(xp,yp,xq,yq):
 
 # Elliptic curve point substraction (Coming soon)
 
+# Elliptic curve point halving (Coming soon)
+
 # Elliptic curve point division (LOL)
 
 #test
