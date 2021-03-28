@@ -14,7 +14,7 @@ def modinv(a,n):
     lm, hm = 1,0
     low, high = a%n,n
     while low > 1:
-        ratio = high/low
+        ratio = high//low
         nm = hm - lm * ratio
         new = high - low * ratio
         hm = lm
