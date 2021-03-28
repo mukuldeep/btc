@@ -8,7 +8,9 @@ order= 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 #order
 Gx = 55066263022277343669578718895168534326250603453777594175500187360389116729240 #x co-ordinate of generating point of secp256k1 i.e. curve used in bitcoin
 Gy = 32670510020758816978083085130507043184471273380659243275938904335757337482424 #y co-ordinate of generating point of secp256k1 i.e. curve used in bitcoin
 
-def modinv(a,n): # Extended Euclidean Algorithm
+# mod inverse
+# Extended Euclidean Algorithm
+def modinv(a,n): 
     lm, hm = 1,0
     low, high = a%n,n
     while low > 1:
@@ -40,11 +42,69 @@ def ECadd(xp,yp,xq,yq):
     yr = (m*(xp-xr)-yp)%P
     return (xr,yr)
   
-# Elliptic curve point multiplication (Coming soon)
+# Elliptic curve point multiplication
+##1. scaler multiplication with generator point
+def ECmult(scaler):
+  if scaler==0:
+    return 0,0
+  _2pX=[0]*258
+  _2pY=[0]*258
+  _2pX[0],_2pY[0]=Gx,Gy
+  _X=Gx
+  _Y=Gy
+  for i in range(1,257):
+    _2pX[i],_2pY[i]=ECdouble(_2pX[i-1],_2pY[i-1])
+  
+  index=0
+  while not(scaler & 1):
+    index+=1
+    scaler>>=1
+  _X=_2pX[index]
+  _Y=_2pY[index]
+  scaler>>=1
+  index+=1
+  while scaler>0:
+    if scaler & 1:
+      _X,_Y=ECadd(_X,_Y,_2pX[index],_2pY[index])
+    scaler>>=1
+    index+=1
+  return _X,_Y
+
+##2. scaler multiplication with other point on secp256k1 curve
+###Example 2*(4G)=8G 4*(5G)=20G etc.
+def ECmult(scaler):
+  if scaler==0:
+    return 0,0
+  _2pX=[0]*258
+  _2pY=[0]*258
+  _2pX[0],_2pY[0]=Gx,Gy
+  _X=Gx
+  _Y=Gy
+  for i in range(1,257):
+    _2pX[i],_2pY[i]=ECdouble(_2pX[i-1],_2pY[i-1])
+  
+  index=0
+  while not(scaler & 1):
+    index+=1
+    scaler>>=1
+  _X=_2pX[index]
+  _Y=_2pY[index]
+  scaler>>=1
+  index+=1
+  while scaler>0:
+    if scaler & 1:
+      _X,_Y=ECadd(_X,_Y,_2pX[index],_2pY[index])
+    scaler>>=1
+    index+=1
+  return _X,_Y
 
 # Elliptic curve point substraction (Coming soon)
 
-# Elliptic curve point halving (Coming soon)
+# Elliptic curve point halving
+## the idea is simple half(xG)=xG*2^(ORD-2)
+## where ORD is the order of the curve
+def EChalf(Px,Py):
+  return ECmultp(Px,Py,pow(2,order-2,order))
 
 # Elliptic curve point division (LOL)
 
