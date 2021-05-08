@@ -72,14 +72,12 @@ def ECmult(scaler):
 
 ##2. scaler multiplication with other point on secp256k1 curve
 ###Example 2*(4G)=8G 4*(5G)=20G etc.
-def ECmult(scaler):
-  if scaler==0:
-    return 0,0
+def ECmultp(Sx,Sy,scaler):
   _2pX=[0]*258
   _2pY=[0]*258
-  _2pX[0],_2pY[0]=Gx,Gy
-  _X=Gx
-  _Y=Gy
+  _2pX[0],_2pY[0]=Sx,Sy
+  _X=Sx
+  _Y=Sy
   for i in range(1,257):
     _2pX[i],_2pY[i]=ECdouble(_2pX[i-1],_2pY[i-1])
   
@@ -91,12 +89,14 @@ def ECmult(scaler):
   _Y=_2pY[index]
   scaler>>=1
   index+=1
+
   while scaler>0:
     if scaler & 1:
       _X,_Y=ECadd(_X,_Y,_2pX[index],_2pY[index])
     scaler>>=1
     index+=1
   return _X,_Y
+
 
 # Elliptic curve point substraction (Coming soon)
 
