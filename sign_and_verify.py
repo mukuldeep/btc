@@ -1,9 +1,10 @@
-#############################################################################
-#
-#   THIS IS FOR DEMONSTRATION! DON'T USE IT IN PRODUCTION
-#     it show how EC signature and verification works
-#           [for secp256k1 only]
-#############################################################################
+#############################################################################################################################################################################
+#                                                                                                                                                                           #
+#                                               THIS IS FOR DEMONSTRATION! DON'T USE IT IN PRODUCTION                                                                       #
+#                                                 it shows how EC signature and verification works                                                                          #
+#                                                             [for secp256k1 only]                                                                                          #
+#                                                                                                                                                                           #
+#############################################################################################################################################################################
 
 P = 2 ** 256 - 2 ** 32 - 2 ** 9 - 2 ** 8 - 2 ** 7 - 2 ** 6 - 2 ** 4 - 1  # prime number for modulus operations
 order = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141  # order for the elliptic curve y^2=x^3+7 ,used in bitcoin
