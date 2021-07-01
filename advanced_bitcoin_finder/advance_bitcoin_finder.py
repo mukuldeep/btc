@@ -523,10 +523,11 @@ start_time = time.time()
 while(1):
     '''
     for i in range(10):
-      one_lap(125,1000)
+      bits_no=random.randint(90,160)#sweet spot
+      one_lap(bits_no,1000)
       print("--- %s seconds ---" % (time.time() - start_time))
-    '''  
-    bits_no=random.randint(90,160)  
+    ''' 
     for i in range(10):
+      bits_no=random.randint(90,160)#sweet spot
       one_lap_adjacent(bits_no,23000)
       print("--- %s seconds ---" % (time.time() - start_time))
