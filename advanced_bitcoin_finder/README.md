@@ -1,3 +1,5 @@
+### THIS MODULE IS CREATED TO CHECK THE PERFORMANCE OF ELLIPTIC CURVE MULTIPLICATION WITH DIFFERENT SIZE OF PREPROCESSED BITS 
+
 ## How to run this?
 * Download advanced_bitcoin_folder i.e.  .py file and .csv file. 
 * Run the .py file
