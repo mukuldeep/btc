@@ -32,6 +32,13 @@ class crypto:
         yr = (m * (xp - xr) - yp) % self.P
         return (xr, yr)
 
+    # Elliptic curve point subtraction i.e. (p1x,p1y)+(p2x,-p2y)
+    def ECsubtract(self,p1x,p1y,p2x,p2y):
+        if(p1x==p2x):
+            print("invalid point subtraction")
+            return (0,0)
+        return self.ECadd(p1x,p1y,p2x,(self.P-p2y)%self.P)
+
     # Elliptic curve point doubling
     def ECdouble(self,xp, yp):
         l = ((3 * xp * xp) * self.modinv(2 * yp, self.P)) % self.P
